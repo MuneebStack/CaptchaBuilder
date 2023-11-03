@@ -6,32 +6,29 @@ class Captcha
 {
     private $fontPath;
     private $captchaText;
+    private $captchaImage;
 
-    public function __construct($length = 6)
+    public function __construct($length = 6, $fontSize = 20)
     {
         $this->fontPath = dirname(__FILE__) . '/fonts/';
         $this->captchaText = $this->generateRandomText($length);
+        $this->captchaImage = $this->renderCaptchaImage($fontSize);
     }
 
-    public function renderCaptchaImage($fontSize = 20)
-    {
-        $image = $this->createCaptchaImage($fontSize);
-        ob_start();
-        imagepng($image);
-        $imageData = ob_get_clean();
-        imagedestroy($image);
-        return 'data:image/png;base64,' . base64_encode($imageData);
-    }
-    
     public function getCaptchaText()
     {
         return $this->captchaText;
     }
 
-    public function refreshCaptchaText($length = 6)
+    public function getCaptchaImage()
+    {
+        return $this->captchaImage;
+    }
+
+    public function refreshCaptcha($length = 6, $fontSize = 20): void
     {
         $this->captchaText = $this->generateRandomText($length);
-        return $this->renderCaptchaImage();
+        $this->captchaImage = $this->renderCaptchaImage($fontSize);
     }
 
     private function generateRandomText($length)
@@ -42,6 +39,16 @@ class Captcha
             $text .= $characters[rand(0, strlen($characters) - 1)];
         }
         return $text;
+    }
+
+    private function renderCaptchaImage($fontSize)
+    {
+        $image = $this->createCaptchaImage($fontSize);
+        ob_start();
+        imagepng($image);
+        $imageData = ob_get_clean();
+        imagedestroy($image);
+        return 'data:image/png;base64,' . base64_encode($imageData);
     }
 
     private function createCaptchaImage($fontSize)
