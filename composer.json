@@ -1,6 +1,6 @@
 {
     "name": "muneebstack/captcha-builder",
-    "description": "A small library for recaptcha",
+    "description": "A library for generating and displaying CAPTCHA images with random text",
     "type": "library",
     "license": "MIT",
     "authors": [
