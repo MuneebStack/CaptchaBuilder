@@ -27,7 +27,7 @@ Before using CaptchaBuilder, please make sure that the GD extension for PHP is i
 To install the CaptchaBuilder library in your project, use Composer:
 
 ```bash
-composer install muneebstack/captcha-builder
+composer require muneebstack/captcha-builder
 ```
 
 ## Usage
