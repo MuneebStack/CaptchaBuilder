@@ -1,6 +1,13 @@
 # CaptchaBuilder
 
-**CaptchaBuilder** is a PHP library designed for generating and displaying CAPTCHA images with random text.
+**CaptchaBuilder** is an open-source PHP library for generating CAPTCHA images using the GD extension.
+
+### Features
+- CAPTCHA image generation
+- Configurable text length and font size
+- Session-friendly CAPTCHA validation
+- Simple API for refreshing CAPTCHA challenges
+- Composer-based installation
 
 ## Prerequisites
 
